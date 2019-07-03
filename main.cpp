@@ -10,12 +10,13 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 class mainMenu
 {
-private:
+protected:
+    int cursorPosition = 1;
+    char cursorMenu = '<';
     string playGame {"Play game<"};
     string controlButtons {"Control buttons"};
     string exitGame {"Exit"};
-    int cursorPosition = 1;
-    char cursorMenu = '<';
+    int pressedBtn;
 public:
     void drawLogo()
     {
@@ -27,28 +28,28 @@ public:
             cout << "TOE";
             SetConsoleTextAttribute(hConsole, 7);
     }
-    void drawFirstMenu()
+    virtual void drawMenu()
     {
         cout << setw(57) << endl << playGame;
         cout << setw(63) << endl << controlButtons;
         cout << setw(52) << endl << exitGame;
     }
-    void moveCursor()
+    virtual void moveCursor()
     {
-        int pressedButton = getch();
-        while (pressedButton)
+        pressedBtn = getch();
+        while (pressedBtn)
         {
-            if(pressedButton == 115 || pressedButton == 119)
+            if(pressedBtn == 115 || pressedBtn == 119)
             {
                 if(cursorPosition == 1)
                 {
-                    if(pressedButton == 115)
+                    if(pressedBtn == 115)
                     {
                         playGame = playGame.substr(0, playGame.size() - 1);
                         controlButtons.push_back(cursorMenu);
                         cursorPosition = 2;
                     }
-                    if(pressedButton == 119)
+                    if(pressedBtn == 119)
                     {
                         playGame = playGame.substr(0, playGame.size() - 1);
                         exitGame.push_back(cursorMenu);
@@ -57,13 +58,13 @@ public:
                 }
                 else if(cursorPosition == 2)
                 {
-                    if(pressedButton == 115)
+                    if(pressedBtn == 115)
                     {
                         controlButtons = controlButtons.substr(0, controlButtons.size() - 1);
                         exitGame.push_back(cursorMenu);
                         cursorPosition = 3;
                     }
-                    if(pressedButton == 119)
+                    if(pressedBtn == 119)
                     {
                         controlButtons = controlButtons.substr(0, controlButtons.size() - 1);
                         playGame.push_back(cursorMenu);
@@ -72,13 +73,13 @@ public:
                 }
                 else if(cursorPosition == 3)
                 {
-                    if(pressedButton == 115)
+                    if(pressedBtn == 115)
                     {
                         exitGame = exitGame.substr(0, exitGame.size() - 1);
                         playGame.push_back(cursorMenu);
                         cursorPosition = 1;
                     }
-                    if(pressedButton == 119)
+                    if(pressedBtn == 119)
                     {
                         exitGame = exitGame.substr(0, exitGame.size() - 1);
                         controlButtons.push_back(cursorMenu);
@@ -87,10 +88,10 @@ public:
                 }
                 system("cls");
                 drawLogo();
-                drawFirstMenu();
+                drawMenu();
                 moveCursor();
             }
-            else if (pressedButton == 13)
+            else if (pressedBtn == 13)
             {
                 exit(0);
             }
@@ -99,11 +100,64 @@ public:
 
 };
 
+class controlMenu : public mainMenu
+{
+private:
+    string moveUP {"w - cursor UP"};
+    string moveDOWN {"s - cursor DOWN"};
+    string moveLEFT {"a - cursor LEFT"};
+    string moveRIGHT {"d - cursor RIGHT"};
+    string backToMain {"Back<"};
+public:
+    void drawMenu()
+    {
+        cout << setw(57) << endl << moveUP;
+        cout << setw(59) << endl << moveDOWN;
+        cout << setw(59) << endl << moveLEFT;
+        cout << setw(60) << endl << moveRIGHT;
+        cout << setw(52) << endl << backToMain;
+        cout << setw(52) << endl << exitGame;
+    }
+    void moveCursor()
+    {
+        pressedBtn = getch();
+        while (pressedBtn)
+        {
+            if(pressedBtn == 115 || pressedBtn == 119)
+            {
+                if(cursorPosition == 1)
+                {
+                    backToMain = backToMain.substr(0, backToMain.size() - 1);
+                    exitGame.push_back(cursorMenu);
+                    cursorPosition = 2;
+                }
+                else if(cursorPosition == 2)
+                {
+                    exitGame = exitGame.substr(0, exitGame.size() - 1);
+                    backToMain.push_back(cursorMenu);
+                    cursorPosition = 1;
+                }
+                system("cls");
+                drawLogo();
+                drawMenu();
+                moveCursor();
+            }
+            else if (pressedBtn == 13)
+            {
+                exit(0);
+            }
+        }
+    }
+};
+
 int main()
 {
-    mainMenu newGame;
+    controlMenu newGame;
+//    newGame.drawLogo();
+//    newGame.drawMenu();
+//    newGame.moveCursor();
     newGame.drawLogo();
-    newGame.drawFirstMenu();
+    newGame.drawMenu();
     newGame.moveCursor();
 
 
