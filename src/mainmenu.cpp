@@ -1,9 +1,9 @@
-#include "../include/mainmenu.h"
 #include <iostream>
 #include <cstring>
 #include <iomanip>
 #include <windows.h>
 #include <conio.h>
+#include "../include/mainmenu.h"
 
 using namespace std;
 
@@ -38,7 +38,7 @@ int mainMenu::moveCursor()
     pressedBtn = getch();
     while (pressedBtn)
     {
-        if(pressedBtn == 115 || pressedBtn == 119 || pressedBtn == 13)
+        if(pressedBtn == 115 || pressedBtn == 119)
         {
             if(cursorPosition == 1)
             {
@@ -85,21 +85,24 @@ int mainMenu::moveCursor()
                     cursorPosition = 2;
                 }
             }
-            if(pressedBtn == 13)
+
+        }
+        if(pressedBtn == 13)
+        {
+            if(cursorPosition == 1)
             {
-                if(cursorPosition == 1)
-                {
+                returnPosition = pressedBtn + 1;
+                return returnPosition;
+            }
+            if(cursorPosition == 2)
+            {
+                returnPosition = pressedBtn;
+                return returnPosition;
 
-                }
-                if(cursorPosition == 2)
-                {
-                    return pressedBtn;
-                }
-                if(cursorPosition == 3)
-                {
-                    exit(0);
-                }
-
+            }
+            if(cursorPosition == 3)
+            {
+                exit(0);
             }
 
         }
@@ -108,9 +111,4 @@ int mainMenu::moveCursor()
             drawMenu();
             moveCursor();
     }
-}
-
-int mainMenu::transition()
-{
-    return pressedBtn;
 }

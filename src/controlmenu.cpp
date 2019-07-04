@@ -22,7 +22,7 @@ int controlMenu::moveCursor()
     pressedBtn = getch();
     while (pressedBtn)
     {
-        if(pressedBtn == 115 || pressedBtn == 119 || pressedBtn == 13)
+        if(pressedBtn == 115 || pressedBtn == 119)
         {
             if(cursorPosition == 1 && (pressedBtn == 115 || pressedBtn == 119))
             {
@@ -36,23 +36,23 @@ int controlMenu::moveCursor()
                 backToMain.push_back(cursorMenu);
                 cursorPosition = 1;
             }
-            if(pressedBtn == 13)
-            {
-                if(cursorPosition == 1)
-                {
-                    return pressedBtn;
-                }
-                if(cursorPosition == 2)
-                {
-                    exit(0);
-                }
-            }
 
-            system("cls");
-            drawLogo();
-            drawMenu();
-            moveCursor();
         }
-//        int transition();
+        if(pressedBtn == 13)
+        {
+            if(cursorPosition == 1)
+            {
+                returnPosition = pressedBtn + 2;
+                return returnPosition;
+            }
+            if(cursorPosition == 2)
+            {
+                exit(0);
+            }
+        }
+        system("cls");
+        drawLogo();
+        drawMenu();
+        moveCursor();
     }
 }

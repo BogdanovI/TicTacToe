@@ -6,8 +6,10 @@ CONFIG -= qt
 SOURCES += \
         src/controlmenu.cpp \
         src/main.cpp \
-        src/mainmenu.cpp
+        src/mainmenu.cpp \
+        src/playgame.cpp
 
 HEADERS += \
     include/controlmenu.h \
-    include/mainmenu.h
+    include/mainmenu.h \
+    include/playgame.h \

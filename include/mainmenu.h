@@ -14,15 +14,15 @@ class mainMenu
 {
 protected:
     int cursorPosition = 1;
-    char cursorMenu = '<';
-    string playGame {"Play game<"};
+    char cursorMenu = '*';
+    string playGame {"Play game*"};
     string controlButtons {"Control buttons"};
     string exitGame {"Exit"};
     int pressedBtn;
 public:
+    int returnPosition;
     void startGame();
     void drawLogo();
-    int transition();
     virtual void drawMenu();
     virtual int moveCursor();
     virtual ~mainMenu(){}
