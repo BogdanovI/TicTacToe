@@ -4,4 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        src/controlmenu.cpp \
+        src/main.cpp \
+        src/mainmenu.cpp
+
+HEADERS += \
+    include/controlmenu.h \
+    include/mainmenu.h
