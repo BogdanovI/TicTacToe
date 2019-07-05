@@ -20,8 +20,8 @@ private:
     string moveRIGHT {"d - cursor RIGHT"};
     string backToMain {"Back*"};
 public:
-    void showControlMenu();
-    void drawMenu();
+    void showControlMenu();                 //The function that displays the control menu and logo at startup
+    void drawMenu();                        //The function that displays the control menu
     int moveCursor();
     virtual ~controlMenu(){}
 };

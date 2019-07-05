@@ -13,18 +13,18 @@ using namespace std;
 class mainMenu
 {
 protected:
-    int cursorPosition = 1;
+    int cursorPosition = 1;                     //Variable for check cursor position in game/menu
     char cursorMenu = '*';
     string playGame {"Play game*"};
     string controlButtons {"Control buttons"};
     string exitGame {"Exit"};
-    int pressedBtn;
+    int pressedBtn;                             //Variable to store the value of the key pressed
 public:
-    int returnPosition;
-    void startGame();
+    int returnPosition;                         //Return cursor position
+    void startGame();                           //The function that displays the main menu and logo at startup
     void drawLogo();
-    virtual void drawMenu();
-    virtual int moveCursor();
+    virtual void drawMenu();                    //The function that displays the main menu
+    virtual int moveCursor();                   //Move game cursor on field
     virtual ~mainMenu(){}
 };
 
