@@ -48,7 +48,8 @@ public:
     int moveCursor();                   //Move game cursor on field
     void checkCell();                   //Сhecking an already established figure
     void changePlayer();                //Change player turn
-    void winCheck();
+    int winCheck();
+    int congratulationsPlayer(int playerWin);
 };
 
 #endif // PLAYGAME_H

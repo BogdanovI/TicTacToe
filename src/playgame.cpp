@@ -33,9 +33,109 @@ void playGame::changePlayer()
     else
         playerTurn = 1;
 }
-void playGame::winCheck()
+int playGame::congratulationsPlayer(int playerWin)
 {
-
+    string winnerPlayer;
+    if(playerWin == 1)
+    {
+        winnerPlayer = "Player 1 WIN GAME!";
+    }
+    else
+    {
+        winnerPlayer = "Player 2 WIN GAME!";
+    }
+    system("cls");
+    drawLogo();
+    cout << endl << setw(62) << "Congratulations";
+    cout << endl << setw(64) << winnerPlayer;
+    cout << endl << setw(57) << backToMain;
+    cout << endl << setw(57) << exitGame;
+    returnPosition = pressedBtn + 2;
+    return returnPosition;
+}
+int playGame::winCheck()
+{
+    int whoWin = 0;
+    if(*cellOne == cursorGameX && *cellTwo == cursorGameX && *cellThree == cursorGameX)
+    {
+        whoWin = 1;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellOne == cursorGameO && *cellTwo == cursorGameO && *cellThree == cursorGameO)
+    {
+        whoWin = 2;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellFour == cursorGameX && *cellFive == cursorGameX && *cellSix == cursorGameX)
+    {
+        whoWin = 1;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellFour == cursorGameO && *cellFive == cursorGameO && *cellSix == cursorGameO)
+    {
+        whoWin = 2;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellSeven == cursorGameX && *cellEight == cursorGameX && *cellNine == cursorGameX)
+    {
+        whoWin = 1;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellSeven == cursorGameO && *cellEight == cursorGameO && *cellNine == cursorGameO)
+    {
+        whoWin = 2;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellOne == cursorGameX && *cellFour == cursorGameX && *cellSeven == cursorGameX)
+    {
+        whoWin = 1;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellOne == cursorGameO && *cellFour == cursorGameO && *cellSeven == cursorGameO)
+    {
+        whoWin = 2;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellThree == cursorGameX && *cellSix == cursorGameX && *cellNine == cursorGameX)
+    {
+        whoWin = 1;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellThree == cursorGameO && *cellSix == cursorGameO && *cellNine == cursorGameO)
+    {
+        whoWin = 2;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellTwo == cursorGameX && *cellFive == cursorGameX && *cellEight == cursorGameX)
+    {
+        whoWin = 1;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellTwo == cursorGameO && *cellFive == cursorGameO && *cellEight == cursorGameO)
+    {
+        whoWin = 2;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellOne == cursorGameX && *cellFive == cursorGameX && *cellNine == cursorGameX)
+    {
+        whoWin = 1;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellOne == cursorGameO && *cellFive == cursorGameO && *cellNine == cursorGameO)
+    {
+        whoWin = 2;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellThree == cursorGameX && *cellFive == cursorGameX && *cellSeven == cursorGameX)
+    {
+        whoWin = 1;
+        congratulationsPlayer(whoWin);
+    }
+    else if(*cellThree == cursorGameO && *cellFive == cursorGameO && *cellSeven == cursorGameO)
+    {
+        whoWin = 2;
+        congratulationsPlayer(whoWin);
+    }
 }
 void playGame::checkCell()
 {
