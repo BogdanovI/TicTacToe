@@ -22,15 +22,15 @@ int controlMenu::moveCursor()
     pressedBtn = getch();
     while (pressedBtn)
     {
-        if(pressedBtn == 115 || pressedBtn == 119)
+        if(pressedBtn == Down || pressedBtn == Up)
         {
-            if(cursorPosition == 1 && (pressedBtn == 115 || pressedBtn == 119))
+            if(cursorPosition == 1 && (pressedBtn == Down || pressedBtn == Up))
             {
                 backToMain = backToMain.substr(0, backToMain.size() - 1);
                 exitGame.push_back(cursorMenu);
                 cursorPosition = 2;
             }
-            else if(cursorPosition == 2 && (pressedBtn == 115 || pressedBtn == 119))
+            else if(cursorPosition == 2 && (pressedBtn == Down || pressedBtn == Up))
             {
                 exitGame = exitGame.substr(0, exitGame.size() - 1);
                 backToMain.push_back(cursorMenu);
@@ -38,7 +38,7 @@ int controlMenu::moveCursor()
             }
 
         }
-        if(pressedBtn == 13)
+        if(pressedBtn == Enter)
         {
             if(cursorPosition == 1)
             {

@@ -38,17 +38,17 @@ int mainMenu::moveCursor()
     pressedBtn = getch();
     while (pressedBtn)
     {
-        if(pressedBtn == 115 || pressedBtn == 119)
+        if(pressedBtn == Down || pressedBtn == Up)
         {
             if(cursorPosition == 1)
             {
-                if(pressedBtn == 115)
+                if(pressedBtn == Down)
                 {
                     playGame = playGame.substr(0, playGame.size() - 1);
                     controlButtons.push_back(cursorMenu);
                     cursorPosition = 2;
                 }
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     playGame = playGame.substr(0, playGame.size() - 1);
                     exitGame.push_back(cursorMenu);
@@ -57,13 +57,13 @@ int mainMenu::moveCursor()
             }
             else if(cursorPosition == 2)
             {
-                if(pressedBtn == 115)
+                if(pressedBtn == Down)
                 {
                     controlButtons = controlButtons.substr(0, controlButtons.size() - 1);
                     exitGame.push_back(cursorMenu);
                     cursorPosition = 3;
                 }
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     controlButtons = controlButtons.substr(0, controlButtons.size() - 1);
                     playGame.push_back(cursorMenu);
@@ -72,13 +72,13 @@ int mainMenu::moveCursor()
             }
             else if(cursorPosition == 3)
             {
-                if(pressedBtn == 115)
+                if(pressedBtn == Down)
                 {
                     exitGame = exitGame.substr(0, exitGame.size() - 1);
                     playGame.push_back(cursorMenu);
                     cursorPosition = 1;
                 }
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     exitGame = exitGame.substr(0, exitGame.size() - 1);
                     controlButtons.push_back(cursorMenu);
@@ -87,7 +87,7 @@ int mainMenu::moveCursor()
             }
 
         }
-        if(pressedBtn == 13)
+        if(pressedBtn == Enter)
         {
             if(cursorPosition == 1)
             {

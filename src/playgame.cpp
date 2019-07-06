@@ -227,29 +227,29 @@ int playGame::moveCursor()
     pressedBtn = getch();
     while (pressedBtn)
     {
-        if(pressedBtn == 119 || pressedBtn == 115 || pressedBtn == 100 || pressedBtn == 97)
+        if(pressedBtn == Up || pressedBtn == Down || pressedBtn == Right || pressedBtn == Left)
         {
             if(cursorPosition == 1)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     *cellOne = ' ';
                     exitGame.push_back(cursorMenu);
                     cursorPosition = 11;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     *cellOne = ' ';
                     *cellFour = cursorMenu;
                     cursorPosition = 4;
                 }
-                else if(pressedBtn == 100)
+                else if(pressedBtn == Right)
                 {
                     *cellOne = ' ';
                     *cellTwo = cursorMenu;
                     cursorPosition = 2;
                 }
-                else if(pressedBtn == 97)
+                else if(pressedBtn == Left)
                 {
                     *cellOne = ' ';
                     *cellThree = cursorMenu;
@@ -258,25 +258,25 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 2)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     *cellTwo = ' ';
                     exitGame.push_back(cursorMenu);
                     cursorPosition = 11;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     *cellTwo = ' ';
                     *cellFive = cursorMenu;
                     cursorPosition = 5;
                 }
-                else if(pressedBtn == 100)
+                else if(pressedBtn == Right)
                 {
                     *cellTwo = ' ';
                     *cellThree = cursorMenu;
                     cursorPosition = 3;
                 }
-                else if(pressedBtn == 97)
+                else if(pressedBtn == Left)
                 {
                     *cellTwo = ' ';
                     *cellOne = cursorMenu;
@@ -285,25 +285,25 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 3)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     *cellThree = ' ';
                     exitGame.push_back(cursorMenu);
                     cursorPosition = 11;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     *cellThree = ' ';
                     *cellSix = cursorMenu;
                     cursorPosition = 6;
                 }
-                else if(pressedBtn == 100)
+                else if(pressedBtn == Right)
                 {
                     *cellThree = ' ';
                     *cellOne = cursorMenu;
                     cursorPosition = 1;
                 }
-                else if(pressedBtn == 97)
+                else if(pressedBtn == Left)
                 {
                     *cellThree = ' ';
                     *cellTwo = cursorMenu;
@@ -312,25 +312,25 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 4)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     *cellFour = ' ';
                     *cellOne = cursorMenu;
                     cursorPosition = 1;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     *cellFour = ' ';
                     *cellSeven = cursorMenu;
                     cursorPosition = 7;
                 }
-                else if(pressedBtn == 100)
+                else if(pressedBtn == Right)
                 {
                     *cellFour = ' ';
                     *cellFive = cursorMenu;
                     cursorPosition = 5;
                 }
-                else if(pressedBtn == 97)
+                else if(pressedBtn == Left)
                 {
                     *cellFour = ' ';
                     *cellSix = cursorMenu;
@@ -339,25 +339,25 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 5)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     *cellFive = ' ';
                     *cellTwo = cursorMenu;
                     cursorPosition = 2;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     *cellFive = ' ';
                     *cellEight = cursorMenu;
                     cursorPosition = 8;
                 }
-                else if(pressedBtn == 100)
+                else if(pressedBtn == Right)
                 {
                     *cellFive = ' ';
                     *cellSix = cursorMenu;
                     cursorPosition = 6;
                 }
-                else if(pressedBtn == 97)
+                else if(pressedBtn == Left)
                 {
                     *cellFive = ' ';
                     *cellFour = cursorMenu;
@@ -366,25 +366,25 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 6)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     *cellSix = ' ';
                     *cellThree = cursorMenu;
                     cursorPosition = 3;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     *cellSix = ' ';
                     *cellNine = cursorMenu;
                     cursorPosition = 9;
                 }
-                else if(pressedBtn == 100)
+                else if(pressedBtn == Right)
                 {
                     *cellSix = ' ';
                     *cellFour = cursorMenu;
                     cursorPosition = 4;
                 }
-                else if(pressedBtn == 97)
+                else if(pressedBtn == Left)
                 {
                     *cellSix = ' ';
                     *cellFive = cursorMenu;
@@ -393,25 +393,25 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 7)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     *cellSeven = ' ';
                     *cellFour = cursorMenu;
                     cursorPosition = 4;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     *cellSeven = ' ';
                     backToMain.push_back(cursorMenu);
                     cursorPosition = 10;
                 }
-                else if(pressedBtn == 100)
+                else if(pressedBtn == Right)
                 {
                     *cellSeven = ' ';
                     *cellEight = cursorMenu;
                     cursorPosition = 8;
                 }
-                else if(pressedBtn == 97)
+                else if(pressedBtn == Left)
                 {
                     *cellSeven = ' ';
                     *cellNine = cursorMenu;
@@ -420,25 +420,25 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 8)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     *cellEight = ' ';
                     *cellFive = cursorMenu;
                     cursorPosition = 5;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     *cellEight = ' ';
                     backToMain.push_back(cursorMenu);
                     cursorPosition = 10;
                 }
-                else if(pressedBtn == 100)
+                else if(pressedBtn == Right)
                 {
                     *cellEight = ' ';
                     *cellNine = cursorMenu;
                     cursorPosition = 9;
                 }
-                else if(pressedBtn == 97)
+                else if(pressedBtn == Left)
                 {
                     *cellEight = ' ';
                     *cellSeven = cursorMenu;
@@ -447,25 +447,25 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 9)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     *cellNine = ' ';
                     *cellSix = cursorMenu;
                     cursorPosition = 6;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     *cellNine = ' ';
                     backToMain.push_back(cursorMenu);
                     cursorPosition = 10;
                 }
-                else if(pressedBtn == 100)
+                else if(pressedBtn == Right)
                 {
                     *cellNine = ' ';
                     *cellSeven = cursorMenu;
                     cursorPosition = 7;
                 }
-                else if(pressedBtn == 97)
+                else if(pressedBtn == Left)
                 {
                     *cellNine = ' ';
                     *cellEight = cursorMenu;
@@ -474,13 +474,13 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 10)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     backToMain = backToMain.substr(0, backToMain.size() - 1);
                     *cellEight = cursorMenu;
                     cursorPosition = 8;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     backToMain = backToMain.substr(0, backToMain.size() - 1);
                     exitGame.push_back(cursorMenu);
@@ -489,13 +489,13 @@ int playGame::moveCursor()
             }
             else if (cursorPosition == 11)
             {
-                if(pressedBtn == 119)
+                if(pressedBtn == Up)
                 {
                     exitGame = exitGame.substr(0, exitGame.size() - 1);
                     backToMain.push_back(cursorMenu);
                     cursorPosition = 10;
                 }
-                else if(pressedBtn == 115)
+                else if(pressedBtn == Down)
                 {
                     exitGame = exitGame.substr(0, exitGame.size() - 1);
                     *cellTwo = cursorMenu;
@@ -504,7 +504,7 @@ int playGame::moveCursor()
             }
         }
 
-        if(pressedBtn == 13)
+        if(pressedBtn == Enter)
         {
             if(cursorPosition == 1)
             {
