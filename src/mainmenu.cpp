@@ -9,6 +9,7 @@ using namespace std;
 
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
+
 void mainMenu::startGame()
 {
         system("cls");
@@ -20,7 +21,7 @@ void mainMenu::startGame()
 void mainMenu::drawLogo()
 {
         SetConsoleTextAttribute(hConsole, 2);
-        cout << setw(53) << "TIC-";
+        cout << setw(8) << "TIC-";
         SetConsoleTextAttribute(hConsole, 12);
         cout << "TAC-";
         SetConsoleTextAttribute(hConsole, 14);
@@ -29,9 +30,9 @@ void mainMenu::drawLogo()
 }
 void mainMenu::drawMenu()
 {
-    cout << setw(57) << endl << playGame;
-    cout << setw(63) << endl << controlButtons;
-    cout << setw(52) << endl << exitGame;
+    cout << setw(12) << endl << playGame;
+    cout << setw(18) << endl << controlButtons;
+    cout << setw(7) << endl << exitGame;
 }
 int mainMenu::moveCursor()
 {
@@ -91,12 +92,12 @@ int mainMenu::moveCursor()
         {
             if(cursorPosition == 1)
             {
-                returnPosition = pressedBtn + 1;
+                returnPosition = inGame;
                 return returnPosition;
             }
             if(cursorPosition == 2)
             {
-                returnPosition = pressedBtn;
+                returnPosition = inControl;
                 return returnPosition;
 
             }

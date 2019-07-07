@@ -6,16 +6,16 @@ void controlMenu::showControlMenu()
         drawLogo();
         drawMenu();
         moveCursor();
-        cursorPosition = 1;
+        cursorPosition = posOne;
 }
 void controlMenu::drawMenu()
 {
-    cout << setw(57) << endl << moveUP;
-    cout << setw(59) << endl << moveDOWN;
-    cout << setw(59) << endl << moveLEFT;
-    cout << setw(60) << endl << moveRIGHT;
-    cout << setw(52) << endl << backToMain;
-    cout << setw(52) << endl << exitGame;
+    cout << setw(15) << endl << moveUP;
+    cout << setw(17) << endl << moveDOWN;
+    cout << setw(17) << endl << moveLEFT;
+    cout << setw(18) << endl << moveRIGHT;
+    cout << setw(10) << endl << backToMain;
+    cout << setw(10) << endl << exitGame;
 }
 int controlMenu::moveCursor()
 {
@@ -42,7 +42,7 @@ int controlMenu::moveCursor()
         {
             if(cursorPosition == 1)
             {
-                returnPosition = pressedBtn + 2;
+                returnPosition = backMenu;
                 return returnPosition;
             }
             if(cursorPosition == 2)

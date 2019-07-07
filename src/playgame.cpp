@@ -7,36 +7,35 @@ playGame::playGame()
     drawMenu();
     moveCursor();
 }
-
 void playGame::drawMenu()
 {
         for (int i =0;i < 5; i++)
         {
             cout << endl;
-            cout << setw(53);
+            cout << setw(8);
             for (int j = 0;j < 5; j++)
             {
                 cout << gameField[i][j];
             }
         }
-        cout << endl << setw(57) << backToMain;
-        cout << endl << setw(57) << exitGame;
-        if(playerTurn == 1)
-            cout << endl << endl << setw(62) << "Turn player 1";
+        cout << endl << setw(12) << backToMain;
+        cout << endl << setw(12) << exitGame;
+        if(playerTurn == PlayerOne)
+            cout << endl << endl << setw(16) << "Turn player 1";
         else
-            cout << endl << endl << setw(62) << "Turn player 2";
+            cout << endl << endl << setw(16) << "Turn player 2";
 }
 void playGame::changePlayer()
 {
-    if(playerTurn == 1)
-        playerTurn = 2;
+    if(playerTurn == PlayerOne)
+        playerTurn = PlayerTwo;
     else
-        playerTurn = 1;
+        playerTurn = PlayerOne;
 }
 int playGame::congratulationsPlayer(int playerWin)
 {
     string winnerPlayer;
-    if(playerWin == 1)
+    if(playerWin == PlayerOne)
     {
         winnerPlayer = "Player 1 WIN GAME!";
     }
@@ -46,180 +45,105 @@ int playGame::congratulationsPlayer(int playerWin)
     }
     system("cls");
     drawLogo();
-    cout << endl << setw(62) << "Congratulations";
-    cout << endl << setw(64) << winnerPlayer;
-    cout << endl << setw(57) << backToMain;
-    cout << endl << setw(57) << exitGame;
-    returnPosition = pressedBtn + 2;
+    cout << endl << setw(17) << "Congratulations";
+    cout << endl << setw(19) << winnerPlayer;
+    cout << endl << setw(12) << backToMain;
+    cout << endl << setw(12) << exitGame;
+    returnPosition = backMenu;
     return returnPosition;
 }
 int playGame::winCheck()
 {
-    int whoWin = 0;
-    if(*cellOne == cursorGameX && *cellTwo == cursorGameX && *cellThree == cursorGameX)
+    int whoWin = noOne;
+    if(*cellsField[0] == cursorGameX && *cellsField[1] == cursorGameX && *cellsField[2] == cursorGameX)
     {
-        whoWin = 1;
+        whoWin = PlayerOne;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellOne == cursorGameO && *cellTwo == cursorGameO && *cellThree == cursorGameO)
+    else if(*cellsField[0] == cursorGameO && *cellsField[1] == cursorGameO && *cellsField[2] == cursorGameO)
     {
-        whoWin = 2;
+        whoWin = PlayerTwo;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellFour == cursorGameX && *cellFive == cursorGameX && *cellSix == cursorGameX)
+    else if(*cellsField[3] == cursorGameX && *cellsField[4] == cursorGameX && *cellsField[5] == cursorGameX)
     {
-        whoWin = 1;
+        whoWin = PlayerOne;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellFour == cursorGameO && *cellFive == cursorGameO && *cellSix == cursorGameO)
+    else if(*cellsField[3] == cursorGameO && *cellsField[4] == cursorGameO && *cellsField[5] == cursorGameO)
     {
-        whoWin = 2;
+        whoWin = PlayerTwo;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellSeven == cursorGameX && *cellEight == cursorGameX && *cellNine == cursorGameX)
+    else if(*cellsField[6] == cursorGameX && *cellsField[7] == cursorGameX && *cellsField[8] == cursorGameX)
     {
-        whoWin = 1;
+        whoWin = PlayerOne;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellSeven == cursorGameO && *cellEight == cursorGameO && *cellNine == cursorGameO)
+    else if(*cellsField[6] == cursorGameO && *cellsField[7] == cursorGameO && *cellsField[8] == cursorGameO)
     {
-        whoWin = 2;
+        whoWin = PlayerTwo;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellOne == cursorGameX && *cellFour == cursorGameX && *cellSeven == cursorGameX)
+    else if(*cellsField[0] == cursorGameX && *cellsField[3] == cursorGameX && *cellsField[6] == cursorGameX)
     {
-        whoWin = 1;
+        whoWin = PlayerOne;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellOne == cursorGameO && *cellFour == cursorGameO && *cellSeven == cursorGameO)
+    else if(*cellsField[0] == cursorGameO && *cellsField[3] == cursorGameO && *cellsField[6] == cursorGameO)
     {
-        whoWin = 2;
+        whoWin = PlayerTwo;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellThree == cursorGameX && *cellSix == cursorGameX && *cellNine == cursorGameX)
+    else if(*cellsField[2] == cursorGameX && *cellsField[5] == cursorGameX && *cellsField[8] == cursorGameX)
     {
-        whoWin = 1;
+        whoWin = PlayerOne;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellThree == cursorGameO && *cellSix == cursorGameO && *cellNine == cursorGameO)
+    else if(*cellsField[2] == cursorGameO && *cellsField[5] == cursorGameO && *cellsField[8] == cursorGameO)
     {
-        whoWin = 2;
+        whoWin = PlayerTwo;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellTwo == cursorGameX && *cellFive == cursorGameX && *cellEight == cursorGameX)
+    else if(*cellsField[1] == cursorGameX && *cellsField[4] == cursorGameX && *cellsField[7] == cursorGameX)
     {
-        whoWin = 1;
+        whoWin = PlayerOne;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellTwo == cursorGameO && *cellFive == cursorGameO && *cellEight == cursorGameO)
+    else if(*cellsField[1] == cursorGameO && *cellsField[4] == cursorGameO && *cellsField[7] == cursorGameO)
     {
-        whoWin = 2;
+        whoWin = PlayerTwo;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellOne == cursorGameX && *cellFive == cursorGameX && *cellNine == cursorGameX)
+    else if(*cellsField[0] == cursorGameX && *cellsField[4] == cursorGameX && *cellsField[8] == cursorGameX)
     {
-        whoWin = 1;
+        whoWin = PlayerOne;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellOne == cursorGameO && *cellFive == cursorGameO && *cellNine == cursorGameO)
+    else if(*cellsField[0] == cursorGameO && *cellsField[4] == cursorGameO && *cellsField[8] == cursorGameO)
     {
-        whoWin = 2;
+        whoWin = PlayerTwo;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellThree == cursorGameX && *cellFive == cursorGameX && *cellSeven == cursorGameX)
+    else if(*cellsField[2] == cursorGameX && *cellsField[4] == cursorGameX && *cellsField[6] == cursorGameX)
     {
-        whoWin = 1;
+        whoWin = PlayerOne;
         congratulationsPlayer(whoWin);
     }
-    else if(*cellThree == cursorGameO && *cellFive == cursorGameO && *cellSeven == cursorGameO)
+    else if(*cellsField[2] == cursorGameO && *cellsField[4] == cursorGameO && *cellsField[6] == cursorGameO)
     {
-        whoWin = 2;
+        whoWin = PlayerTwo;
         congratulationsPlayer(whoWin);
     }
 }
 void playGame::checkCell()
 {
-
-    switch (checkCellOne)
+    for (int i = 0;i < 9;i++)
     {
-    case 1:
-        *cellOne = cursorGameX;
-        break;
-    case 2:
-        *cellOne = cursorGameO;
-        break;
-    }
-    switch (checkCellTwo)
-    {
-    case 1:
-        *cellTwo = cursorGameX;
-        break;
-    case 2:
-        *cellTwo = cursorGameO;
-        break;
-    }
-    switch (checkCellThree)
-    {
-    case 1:
-        *cellThree = cursorGameX;
-        break;
-    case 2:
-        *cellThree = cursorGameO;
-        break;
-    }
-    switch (checkCellFour)
-    {
-    case 1:
-        *cellFour = cursorGameX;
-        break;
-    case 2:
-        *cellFour = cursorGameO;
-        break;
-    }
-    switch (checkCellFive)
-    {
-    case 1:
-        *cellFive = cursorGameX;
-        break;
-    case 2:
-        *cellFive = cursorGameO;
-        break;
-    }
-    switch (checkCellSix)
-    {
-    case 1:
-        *cellSix = cursorGameX;
-        break;
-    case 2:
-        *cellSix = cursorGameO;
-        break;
-    }
-    switch (checkCellSeven)
-    {
-    case 1:
-        *cellSeven = cursorGameX;
-        break;
-    case 2:
-        *cellSeven = cursorGameO;
-        break;
-    }
-    switch (checkCellEight)
-    {
-    case 1:
-        *cellEight = cursorGameX;
-        break;
-    case 2:
-        *cellEight = cursorGameO;
-        break;
-    }
-    switch (checkCellNine)
-    {
-    case 1:
-        *cellNine = cursorGameX;
-        break;
-    case 2:
-        *cellNine = cursorGameO;
-        break;
+        if(checkCells[i] == 1)
+            *cellsField[i] = cursorGameX;
+        else if(checkCells[i] == 2)
+            *cellsField[i] = cursorGameO;
     }
 }
 int playGame::moveCursor()
@@ -233,26 +157,26 @@ int playGame::moveCursor()
             {
                 if(pressedBtn == Up)
                 {
-                    *cellOne = ' ';
+                    *cellsField[0] = ' ';
                     exitGame.push_back(cursorMenu);
                     cursorPosition = 11;
                 }
                 else if(pressedBtn == Down)
                 {
-                    *cellOne = ' ';
-                    *cellFour = cursorMenu;
+                    *cellsField[0] = ' ';
+                    *cellsField[3] = cursorMenu;
                     cursorPosition = 4;
                 }
                 else if(pressedBtn == Right)
                 {
-                    *cellOne = ' ';
-                    *cellTwo = cursorMenu;
+                    *cellsField[0] = ' ';
+                    *cellsField[1] = cursorMenu;
                     cursorPosition = 2;
                 }
                 else if(pressedBtn == Left)
                 {
-                    *cellOne = ' ';
-                    *cellThree = cursorMenu;
+                    *cellsField[0] = ' ';
+                    *cellsField[2] = cursorMenu;
                     cursorPosition = 3;
                 }
             }
@@ -260,26 +184,26 @@ int playGame::moveCursor()
             {
                 if(pressedBtn == Up)
                 {
-                    *cellTwo = ' ';
+                    *cellsField[1] = ' ';
                     exitGame.push_back(cursorMenu);
                     cursorPosition = 11;
                 }
                 else if(pressedBtn == Down)
                 {
-                    *cellTwo = ' ';
-                    *cellFive = cursorMenu;
+                    *cellsField[1] = ' ';
+                    *cellsField[4] = cursorMenu;
                     cursorPosition = 5;
                 }
                 else if(pressedBtn == Right)
                 {
-                    *cellTwo = ' ';
-                    *cellThree = cursorMenu;
+                    *cellsField[1] = ' ';
+                    *cellsField[2] = cursorMenu;
                     cursorPosition = 3;
                 }
                 else if(pressedBtn == Left)
                 {
-                    *cellTwo = ' ';
-                    *cellOne = cursorMenu;
+                    *cellsField[1] = ' ';
+                    *cellsField[0] = cursorMenu;
                     cursorPosition = 1;
                 }
             }
@@ -287,26 +211,26 @@ int playGame::moveCursor()
             {
                 if(pressedBtn == Up)
                 {
-                    *cellThree = ' ';
+                    *cellsField[2] = ' ';
                     exitGame.push_back(cursorMenu);
                     cursorPosition = 11;
                 }
                 else if(pressedBtn == Down)
                 {
-                    *cellThree = ' ';
-                    *cellSix = cursorMenu;
+                    *cellsField[2] = ' ';
+                    *cellsField[5] = cursorMenu;
                     cursorPosition = 6;
                 }
                 else if(pressedBtn == Right)
                 {
-                    *cellThree = ' ';
-                    *cellOne = cursorMenu;
+                    *cellsField[2] = ' ';
+                    *cellsField[0] = cursorMenu;
                     cursorPosition = 1;
                 }
                 else if(pressedBtn == Left)
                 {
-                    *cellThree = ' ';
-                    *cellTwo = cursorMenu;
+                    *cellsField[2] = ' ';
+                    *cellsField[1] = cursorMenu;
                     cursorPosition = 2;
                 }
             }
@@ -314,26 +238,26 @@ int playGame::moveCursor()
             {
                 if(pressedBtn == Up)
                 {
-                    *cellFour = ' ';
-                    *cellOne = cursorMenu;
+                    *cellsField[3] = ' ';
+                    *cellsField[0] = cursorMenu;
                     cursorPosition = 1;
                 }
                 else if(pressedBtn == Down)
                 {
-                    *cellFour = ' ';
-                    *cellSeven = cursorMenu;
+                    *cellsField[3] = ' ';
+                    *cellsField[6] = cursorMenu;
                     cursorPosition = 7;
                 }
                 else if(pressedBtn == Right)
                 {
-                    *cellFour = ' ';
-                    *cellFive = cursorMenu;
+                    *cellsField[3] = ' ';
+                    *cellsField[4] = cursorMenu;
                     cursorPosition = 5;
                 }
                 else if(pressedBtn == Left)
                 {
-                    *cellFour = ' ';
-                    *cellSix = cursorMenu;
+                    *cellsField[3] = ' ';
+                    *cellsField[5] = cursorMenu;
                     cursorPosition = 6;
                 }
             }
@@ -341,26 +265,26 @@ int playGame::moveCursor()
             {
                 if(pressedBtn == Up)
                 {
-                    *cellFive = ' ';
-                    *cellTwo = cursorMenu;
+                    *cellsField[4] = ' ';
+                    *cellsField[1] = cursorMenu;
                     cursorPosition = 2;
                 }
                 else if(pressedBtn == Down)
                 {
-                    *cellFive = ' ';
-                    *cellEight = cursorMenu;
+                    *cellsField[4] = ' ';
+                    *cellsField[7] = cursorMenu;
                     cursorPosition = 8;
                 }
                 else if(pressedBtn == Right)
                 {
-                    *cellFive = ' ';
-                    *cellSix = cursorMenu;
+                    *cellsField[4] = ' ';
+                    *cellsField[5] = cursorMenu;
                     cursorPosition = 6;
                 }
                 else if(pressedBtn == Left)
                 {
-                    *cellFive = ' ';
-                    *cellFour = cursorMenu;
+                    *cellsField[4] = ' ';
+                    *cellsField[3] = cursorMenu;
                     cursorPosition = 4;
                 }
             }
@@ -368,26 +292,26 @@ int playGame::moveCursor()
             {
                 if(pressedBtn == Up)
                 {
-                    *cellSix = ' ';
-                    *cellThree = cursorMenu;
+                    *cellsField[5] = ' ';
+                    *cellsField[2] = cursorMenu;
                     cursorPosition = 3;
                 }
                 else if(pressedBtn == Down)
                 {
-                    *cellSix = ' ';
-                    *cellNine = cursorMenu;
+                    *cellsField[5] = ' ';
+                    *cellsField[8] = cursorMenu;
                     cursorPosition = 9;
                 }
                 else if(pressedBtn == Right)
                 {
-                    *cellSix = ' ';
-                    *cellFour = cursorMenu;
+                    *cellsField[5] = ' ';
+                    *cellsField[3] = cursorMenu;
                     cursorPosition = 4;
                 }
                 else if(pressedBtn == Left)
                 {
-                    *cellSix = ' ';
-                    *cellFive = cursorMenu;
+                    *cellsField[5] = ' ';
+                    *cellsField[4] = cursorMenu;
                     cursorPosition = 5;
                 }
             }
@@ -395,26 +319,26 @@ int playGame::moveCursor()
             {
                 if(pressedBtn == Up)
                 {
-                    *cellSeven = ' ';
-                    *cellFour = cursorMenu;
+                    *cellsField[6] = ' ';
+                    *cellsField[3] = cursorMenu;
                     cursorPosition = 4;
                 }
                 else if(pressedBtn == Down)
                 {
-                    *cellSeven = ' ';
+                    *cellsField[6] = ' ';
                     backToMain.push_back(cursorMenu);
                     cursorPosition = 10;
                 }
                 else if(pressedBtn == Right)
                 {
-                    *cellSeven = ' ';
-                    *cellEight = cursorMenu;
+                    *cellsField[6] = ' ';
+                    *cellsField[7] = cursorMenu;
                     cursorPosition = 8;
                 }
                 else if(pressedBtn == Left)
                 {
-                    *cellSeven = ' ';
-                    *cellNine = cursorMenu;
+                    *cellsField[6] = ' ';
+                    *cellsField[8] = cursorMenu;
                     cursorPosition = 9;
                 }
             }
@@ -422,26 +346,26 @@ int playGame::moveCursor()
             {
                 if(pressedBtn == Up)
                 {
-                    *cellEight = ' ';
-                    *cellFive = cursorMenu;
+                    *cellsField[7] = ' ';
+                    *cellsField[4] = cursorMenu;
                     cursorPosition = 5;
                 }
                 else if(pressedBtn == Down)
                 {
-                    *cellEight = ' ';
+                    *cellsField[7] = ' ';
                     backToMain.push_back(cursorMenu);
                     cursorPosition = 10;
                 }
                 else if(pressedBtn == Right)
                 {
-                    *cellEight = ' ';
-                    *cellNine = cursorMenu;
+                    *cellsField[7] = ' ';
+                    *cellsField[8] = cursorMenu;
                     cursorPosition = 9;
                 }
                 else if(pressedBtn == Left)
                 {
-                    *cellEight = ' ';
-                    *cellSeven = cursorMenu;
+                    *cellsField[7] = ' ';
+                    *cellsField[6] = cursorMenu;
                     cursorPosition = 7;
                 }
             }
@@ -449,26 +373,26 @@ int playGame::moveCursor()
             {
                 if(pressedBtn == Up)
                 {
-                    *cellNine = ' ';
-                    *cellSix = cursorMenu;
+                    *cellsField[8] = ' ';
+                    *cellsField[5] = cursorMenu;
                     cursorPosition = 6;
                 }
                 else if(pressedBtn == Down)
                 {
-                    *cellNine = ' ';
+                    *cellsField[8] = ' ';
                     backToMain.push_back(cursorMenu);
                     cursorPosition = 10;
                 }
                 else if(pressedBtn == Right)
                 {
-                    *cellNine = ' ';
-                    *cellSeven = cursorMenu;
+                    *cellsField[8] = ' ';
+                    *cellsField[6] = cursorMenu;
                     cursorPosition = 7;
                 }
                 else if(pressedBtn == Left)
                 {
-                    *cellNine = ' ';
-                    *cellEight = cursorMenu;
+                    *cellsField[8] = ' ';
+                    *cellsField[7] = cursorMenu;
                     cursorPosition = 8;
                 }
             }
@@ -477,7 +401,7 @@ int playGame::moveCursor()
                 if(pressedBtn == Up)
                 {
                     backToMain = backToMain.substr(0, backToMain.size() - 1);
-                    *cellEight = cursorMenu;
+                    *cellsField[7] = cursorMenu;
                     cursorPosition = 8;
                 }
                 else if(pressedBtn == Down)
@@ -498,7 +422,7 @@ int playGame::moveCursor()
                 else if(pressedBtn == Down)
                 {
                     exitGame = exitGame.substr(0, exitGame.size() - 1);
-                    *cellTwo = cursorMenu;
+                    *cellsField[1] = cursorMenu;
                     cursorPosition = 2;
                 }
             }
@@ -508,20 +432,20 @@ int playGame::moveCursor()
         {
             if(cursorPosition == 1)
             {
-                if(playerTurn == 1 && *cellOne != cursorGameO)
+                if(playerTurn == 1 && *cellsField[0] != cursorGameO)
                 {
-                    *cellOne = cursorGameX;
-                    checkCellOne = 1;
-                    if(*cellOne == cursorGameX)
+                    *cellsField[0] = cursorGameX;
+                    checkCells[0] = 1;
+                    if(*cellsField[0] == cursorGameX)
                     {
                         changePlayer();
                     }
                 }
-                else if(playerTurn == 2 && *cellOne != cursorGameX)
+                else if(playerTurn == 2 && *cellsField[0] != cursorGameX)
                 {
-                    *cellOne = cursorGameO;
-                    checkCellOne = 2;
-                    if(*cellOne == cursorGameO)
+                    *cellsField[0] = cursorGameO;
+                    checkCells[0] = 2;
+                    if(*cellsField[0] == cursorGameO)
                     {
                         changePlayer();
                     }
@@ -529,20 +453,20 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 2)
             {
-                if(playerTurn == 1 && *cellTwo != cursorGameO)
+                if(playerTurn == 1 && *cellsField[1] != cursorGameO)
                 {
-                    *cellTwo = cursorGameX;
-                    checkCellTwo = 1;
-                    if(*cellTwo == cursorGameX)
+                    *cellsField[1] = cursorGameX;
+                    checkCells[1] = 1;
+                    if(*cellsField[1] == cursorGameX)
                     {
                         changePlayer();
                     }
                 }
-                else if(playerTurn == 2 && *cellTwo != cursorGameX)
+                else if(playerTurn == 2 && *cellsField[1] != cursorGameX)
                 {
-                    *cellTwo = cursorGameO;
-                    checkCellTwo = 2;
-                    if(*cellTwo == cursorGameO)
+                    *cellsField[1] = cursorGameO;
+                    checkCells[1] = 2;
+                    if(*cellsField[1] == cursorGameO)
                     {
                         changePlayer();
                     }
@@ -550,20 +474,20 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 3)
             {
-                if(playerTurn == 1 && *cellThree != cursorGameO)
+                if(playerTurn == 1 && *cellsField[2] != cursorGameO)
                 {
-                    *cellThree = cursorGameX;
-                    checkCellThree = 1;
-                    if(*cellThree == cursorGameX)
+                    *cellsField[2] = cursorGameX;
+                    checkCells[2] = 1;
+                    if(*cellsField[2] == cursorGameX)
                     {
                         changePlayer();
                     }
                 }
-                else if(playerTurn == 2 && *cellThree != cursorGameX)
+                else if(playerTurn == 2 && *cellsField[2] != cursorGameX)
                 {
-                    *cellThree = cursorGameO;
-                    checkCellThree = 2;
-                    if(*cellThree == cursorGameO)
+                    *cellsField[2] = cursorGameO;
+                    checkCells[2] = 2;
+                    if(*cellsField[2] == cursorGameO)
                     {
                         changePlayer();
                     }
@@ -572,20 +496,20 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 4)
             {
-                if(playerTurn == 1 && *cellFour != cursorGameO)
+                if(playerTurn == 1 && *cellsField[3] != cursorGameO)
                 {
-                    *cellFour = cursorGameX;
-                    checkCellFour = 1;
-                    if(*cellFour == cursorGameX)
+                    *cellsField[3] = cursorGameX;
+                    checkCells[3] = 1;
+                    if(*cellsField[3] == cursorGameX)
                     {
                         changePlayer();
                     }
                 }
-                else if(playerTurn == 2 && *cellFour != cursorGameX)
+                else if(playerTurn == 2 && *cellsField[3] != cursorGameX)
                 {
-                    *cellFour = cursorGameO;
-                    checkCellFour = 2;
-                    if(*cellFour == cursorGameO)
+                    *cellsField[3] = cursorGameO;
+                    checkCells[3] = 2;
+                    if(*cellsField[3] == cursorGameO)
                     {
                         changePlayer();
                     }
@@ -593,20 +517,20 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 5)
             {
-                if(playerTurn == 1 && *cellFive != cursorGameO)
+                if(playerTurn == 1 && *cellsField[4] != cursorGameO)
                 {
-                    *cellFive = cursorGameX;
-                    checkCellFive = 1;
-                    if(*cellFive == cursorGameX)
+                    *cellsField[4] = cursorGameX;
+                    checkCells[4] = 1;
+                    if(*cellsField[4] == cursorGameX)
                     {
                         changePlayer();
                     }
                 }
-                else if(playerTurn == 2 && *cellFive != cursorGameX)
+                else if(playerTurn == 2 && *cellsField[4] != cursorGameX)
                 {
-                    *cellFive = cursorGameO;
-                    checkCellFive = 2;
-                    if(*cellFive == cursorGameO)
+                    *cellsField[4] = cursorGameO;
+                    checkCells[4] = 2;
+                    if(*cellsField[4] == cursorGameO)
                     {
                         changePlayer();
                     }
@@ -614,20 +538,20 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 6)
             {
-                if(playerTurn == 1 && *cellSix != cursorGameO)
+                if(playerTurn == 1 && *cellsField[5] != cursorGameO)
                 {
-                    *cellSix = cursorGameX;
-                    checkCellSix = 1;
-                    if(*cellSix == cursorGameX)
+                    *cellsField[5] = cursorGameX;
+                    checkCells[5] = 1;
+                    if(*cellsField[5] == cursorGameX)
                     {
                         changePlayer();
                     }
                 }
-                else if(playerTurn == 2 && *cellSix != cursorGameX)
+                else if(playerTurn == 2 && *cellsField[5] != cursorGameX)
                 {
-                    *cellSix = cursorGameO;
-                    checkCellSix = 2;
-                    if(*cellSix == cursorGameO)
+                    *cellsField[5] = cursorGameO;
+                    checkCells[5] = 2;
+                    if(*cellsField[5] == cursorGameO)
                     {
                         changePlayer();
                     }
@@ -635,20 +559,20 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 7)
             {
-                if(playerTurn == 1 && *cellSeven != cursorGameO)
+                if(playerTurn == 1 && *cellsField[6] != cursorGameO)
                 {
-                    *cellSeven = cursorGameX;
-                    checkCellSeven = 1;
-                    if(*cellSeven == cursorGameX)
+                    *cellsField[6] = cursorGameX;
+                    checkCells[6] = 1;
+                    if(*cellsField[6] == cursorGameX)
                     {
                         changePlayer();
                     }
                 }
-                else if(playerTurn == 2 && *cellSeven != cursorGameX)
+                else if(playerTurn == 2 && *cellsField[6] != cursorGameX)
                 {
-                    *cellSeven = cursorGameO;
-                    checkCellSeven = 2;
-                    if(*cellSeven == cursorGameO)
+                    *cellsField[6] = cursorGameO;
+                    checkCells[6] = 2;
+                    if(*cellsField[6] == cursorGameO)
                     {
                         changePlayer();
                     }
@@ -656,20 +580,20 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 8)
             {
-                if(playerTurn == 1 && *cellEight != cursorGameO)
+                if(playerTurn == 1 && *cellsField[7] != cursorGameO)
                 {
-                    *cellEight = cursorGameX;
-                    checkCellEight = 1;
-                    if(*cellEight == cursorGameX)
+                    *cellsField[7] = cursorGameX;
+                    checkCells[7] = 1;
+                    if(*cellsField[7] == cursorGameX)
                     {
                         changePlayer();
                     }
                 }
-                else if(playerTurn == 2 && *cellEight != cursorGameX)
+                else if(playerTurn == 2 && *cellsField[7] != cursorGameX)
                 {
-                    *cellEight = cursorGameO;
-                    checkCellEight = 2;
-                    if(*cellEight == cursorGameO)
+                    *cellsField[7] = cursorGameO;
+                    checkCells[7] = 2;
+                    if(*cellsField[7] == cursorGameO)
                     {
                         changePlayer();
                     }
@@ -677,20 +601,20 @@ int playGame::moveCursor()
             }
             else if(cursorPosition == 9)
             {
-                if(playerTurn == 1 && *cellNine != cursorGameO)
+                if(playerTurn == 1 && *cellsField[8] != cursorGameO)
                 {
-                    *cellNine = cursorGameX;
-                    checkCellNine = 1;
-                    if(*cellNine == cursorGameX)
+                    *cellsField[8] = cursorGameX;
+                    checkCells[8] = 1;
+                    if(*cellsField[8] == cursorGameX)
                     {
                         changePlayer();
                     }
                 }
-                else if(playerTurn == 2 && *cellNine != cursorGameX)
+                else if(playerTurn == 2 && *cellsField[8] != cursorGameX)
                 {
-                    *cellNine = cursorGameO;
-                    checkCellNine = 2;
-                    if(*cellNine == cursorGameO)
+                    *cellsField[8] = cursorGameO;
+                    checkCells[8] = 2;
+                    if(*cellsField[8] == cursorGameO)
                     {
                         changePlayer();
                     }
