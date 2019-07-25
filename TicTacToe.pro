@@ -4,12 +4,14 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        src/controlmenu.cpp \
+        src/gamecursor.cpp \
+        src/gamefield.cpp \
         src/main.cpp \
-        src/mainmenu.cpp \
-        src/playgame.cpp
 
-HEADERS += \
-    include/controlmenu.h \
-    include/mainmenu.h \
-    include/playgame.h \
+INCLUDEPATH += \
+    include/
+
+HEADERS += \ \
+    include/gamecursor.h \
+    include/gamefield.h
+
